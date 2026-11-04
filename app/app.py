@@ -495,13 +495,13 @@ def _render_auth_screen() -> None:
                             type="primary",
                             use_container_width=True,
                         )
-                        st.form_submit_button(
-                            "Sign in",
-                            key="auth_switch_signin",
-                            type="secondary",
-                            on_click=_set_auth_mode,
-                            args=("signin",),
-                        )
+                        with st.container(key="auth_switch_signin"):
+                            st.form_submit_button(
+                                "Sign in",
+                                type="secondary",
+                                on_click=_set_auth_mode,
+                                args=("signin",),
+                            )
                     if submitted:
                         if signup_password != confirm_password:
                             st.error("The password confirmation does not match.")
@@ -551,13 +551,13 @@ def _render_auth_screen() -> None:
                             type="primary",
                             use_container_width=True,
                         )
-                        st.form_submit_button(
-                            "Create an account",
-                            key="auth_switch_signup",
-                            type="secondary",
-                            on_click=_set_auth_mode,
-                            args=("signup",),
-                        )
+                        with st.container(key="auth_switch_signup"):
+                            st.form_submit_button(
+                                "Create an account",
+                                type="secondary",
+                                on_click=_set_auth_mode,
+                                args=("signup",),
+                            )
                     if submitted:
                         try:
                             user = authenticate(
